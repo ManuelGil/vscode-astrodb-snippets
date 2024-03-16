@@ -1,0 +1,242 @@
+{
+  "primary key": {
+    "prefix": ["db_primary_key", "primary key"],
+    "scope": "javascript,typescript",
+    "body": "id: column.number({ primaryKey: true }),"
+  },
+  "text": {
+    "prefix": ["db_text", "text"],
+    "scope": "javascript,typescript",
+    "body": "${1:name}: column.text(),"
+  },
+  "number": {
+    "prefix": ["db_number", "number"],
+    "scope": "javascript,typescript",
+    "body": "${1:name}: column.number(),"
+  },
+  "boolean": {
+    "prefix": ["db_boolean", "boolean"],
+    "scope": "javascript,typescript",
+    "body": "${1:name}: column.boolean(),"
+  },
+  "date": {
+    "prefix": ["db_date", "date"],
+    "scope": "javascript,typescript",
+    "body": "${1:name}: column.date({ default: NOW }),"
+  },
+  "json": {
+    "prefix": ["db_json", "json"],
+    "scope": "javascript,typescript",
+    "body": "${1:name}: column.json(),"
+  },
+  "references": {
+    "prefix": ["db_references", "int references"],
+    "scope": "javascript,typescript",
+    "body": "${1:name}Id: int('${1:name}_id').references(() => ${2:table}.${3:column}),"
+  },
+  "select": {
+    "prefix": ["db_select", "select"],
+    "scope": "javascript,typescript",
+    "body": ["await db.select({", "\t\t$1,", "\t})", "\t.from(${2:table})", "\t.where(", "\t\t$3,", "\t);", ""]
+  },
+  "selectDistinct": {
+    "prefix": ["db_select_distinct", "selectDistinct"],
+    "scope": "javascript,typescript",
+    "body": ["await db.selectDistinct({", "\t\t$1,", "\t})", "\t.from(${2:table})", "\t.where(", "\t\t$3,", "\t);", ""]
+  },
+  "selectDistinctOn": {
+    "prefix": ["db_select_distinct_on", "selectDistinctOn"],
+    "scope": "javascript,typescript",
+    "body": ["await db.selectDistinctOn([", "\t\t$1,", "\t]), {", "\t\t$2,", "\t})", "\t.from(${3:table})", "\t.where(", "\t\t$4,", "\t);", ""]
+  },
+  "limit & offset": {
+    "prefix": ["db_limit", "limit"],
+    "scope": "javascript,typescript",
+    "body": ["await db.select({", "\t\t$1,", "\t})", "\t.from(${2:table})", "\t.limit(${3:limit})", "\t.offset(${4:offset});", ""]
+  },
+  "orderBy": {
+    "prefix": ["db_order_by", "orderBy"],
+    "scope": "javascript,typescript",
+    "body": ["await db.select({", "\t\t$1,", "\t})", "\t.from(${2:table})", "\t.orderBy(${3:column});", ""]
+  },
+  "groupBy": {
+    "prefix": ["db_group_by", "groupBy"],
+    "scope": "javascript,typescript",
+    "body": ["await db.select({", "\t\t$1,", "\t})", "\t.from(${2:table})", "\t.groupBy(${3:column})", "\t.having(({ $4 }) => $5);", ""]
+  },
+  "$with": {
+    "prefix": ["db__with", "$with"],
+    "scope": "javascript,typescript",
+    "body": ["db.\\$with(${1:alias}).as(", "\t\tdb.select({", "\t\t  $2,", "\t\t})", "\t\t.from(${3:table})", "\t\t.where(", "\t\t  $4,", "\t\t)", "\t);", ""]
+  },
+  "with": {
+    "prefix": ["db_with", "with"],
+    "scope": "javascript,typescript",
+    "body": ["db.with(${1:alias})", "\t.select({", "\t\t$2,", "\t})", "\t.from(${1:alias})", "\t.where(", "\t\t$3,", "\t);", ""]
+  },
+  "update": {
+    "prefix": ["db_update", "update"],
+    "scope": "javascript,typescript",
+    "body": ["await db.update(${1:table}).set({", "\t\t$2,", "\t}).where(", "\t\t$3,", "\t);", ""]
+  },
+  "insert": {
+    "prefix": ["db_insert", "insert"],
+    "scope": "javascript,typescript",
+    "body": ["await db.insert(${1:table}).values({", "\t\t$2,", "\t});", ""]
+  },
+  "onConflictDoNothing": {
+    "prefix": ["db_on_conflict_do_nothing", "onConflictDoNothing"],
+    "scope": "javascript,typescript",
+    "body": ["await db.insert(${1:table}).values({", "\t\t$2,", "\t}).onConflictDoNothing({", "\t\ttarget: ${3:column},", "\t});", ""]
+  },
+  "onConflictDoUpdate": {
+    "prefix": ["db_on_conflict_do_update", "onConflictDoUpdate"],
+    "scope": "javascript,typescript",
+    "body": ["await db.insert(${1:table}).values({", "\t\t$2,", "\t}).onConflictDoUpdate({", "\t\ttarget: ${3:column},", "\t\tset: {", "\t\t  $4,", "\t\t},", "\t});", ""]
+  },
+  "onDuplicateKeyUpdate": {
+    "prefix": ["db_on_duplicate_key_update", "onDuplicateKeyUpdate"],
+    "scope": "javascript,typescript",
+    "body": ["await db.insert(${1:table}).values({", "\t\t$2,", "\t}).onDuplicateKeyUpdate({", "\t\tset: {", "\t\t  $3,", "\t\t},", "\t});", ""]
+  },
+  "delete": {
+    "prefix": ["db_delete", "delete"],
+    "scope": "javascript,typescript",
+    "body": ["await db.delete(${1:table}).where(", "\t\t$2,", "\t);", ""]
+  },
+  "leftJoin": {
+    "prefix": ["db_left_join", "leftJoin"],
+    "scope": "javascript,typescript",
+    "body": ["await db.select({", "\t\t$1,", "\t})", "\t.from(${2:table})", "\t.leftJoin(${3:table}, ${4:condition});", ""]
+  },
+  "rightJoin": {
+    "prefix": ["db_right_join", "rightJoin"],
+    "scope": "javascript,typescript",
+    "body": ["await db.select({", "\t\t$1,", "\t})", "\t.from(${2:table})", "\t.rightJoin(${3:table}, ${4:condition});", ""]
+  },
+  "innerJoin": {
+    "prefix": ["db_inner_join", "innerJoin"],
+    "scope": "javascript,typescript",
+    "body": ["await db.select({", "\t\t$1,", "\t})", "\t.from(${2:table})", "\t.innerJoin(${3:table}, ${4:condition});", ""]
+  },
+  "fullJoin": {
+    "prefix": ["db_full_join", "fullJoin"],
+    "scope": "javascript,typescript",
+    "body": ["await db.select({", "\t\t$1,", "\t})", "\t.from(${2:table})", "\t.fullJoin(${3:table}, ${4:condition});", ""]
+  },
+  "eq": {
+    "prefix": ["db_eq", "eq"],
+    "scope": "javascript,typescript",
+    "body": "eq(${1:column}, ${2:value})"
+  },
+  "ne": {
+    "prefix": ["db_ne", "ne"],
+    "scope": "javascript,typescript",
+    "body": "ne(${1:column}, ${2:value})"
+  },
+  "gt": {
+    "prefix": ["db_gt", "gt"],
+    "scope": "javascript,typescript",
+    "body": "gt(${1:column}, ${2:value})"
+  },
+  "gte": {
+    "prefix": ["db_gte", "gte"],
+    "scope": "javascript,typescript",
+    "body": "gte(${1:column}, ${2:value})"
+  },
+  "lt": {
+    "prefix": ["db_lt", "lt"],
+    "scope": "javascript,typescript",
+    "body": "lt(${1:column}, ${2:value})"
+  },
+  "lte": {
+    "prefix": ["db_lte", "lte"],
+    "scope": "javascript,typescript",
+    "body": "lte(${1:column}, ${2:value})"
+  },
+  "isNull": {
+    "prefix": ["db_is_null", "isNull"],
+    "scope": "javascript,typescript",
+    "body": "isNull(${1:column})"
+  },
+  "isNotNull": {
+    "prefix": ["db_is_not_null", "isNotNull"],
+    "scope": "javascript,typescript",
+    "body": "isNotNull(${1:column})"
+  },
+  "inArray": {
+    "prefix": ["db_in_array", "inArray"],
+    "scope": "javascript,typescript",
+    "body": "inArray(${1:column}, ${2:array})"
+  },
+  "notInArray": {
+    "prefix": ["db_not_in_array", "notInArray"],
+    "scope": "javascript,typescript",
+    "body": "notInArray(${1:column}, ${2:array})"
+  },
+  "exists": {
+    "prefix": ["db_exists", "exists"],
+    "scope": "javascript,typescript",
+    "body": "exists(${1:column})"
+  },
+  "notExists": {
+    "prefix": ["db_not_exists", "notExists"],
+    "scope": "javascript,typescript",
+    "body": "notExists(${1:column})"
+  },
+  "between": {
+    "prefix": ["db_between", "between"],
+    "scope": "javascript,typescript",
+    "body": "between(${1:column}, ${2:from}, ${3:to})"
+  },
+  "notBetween": {
+    "prefix": ["db_not_between", "notBetween"],
+    "scope": "javascript,typescript",
+    "body": "notBetween(${1:column}, ${2:from}, ${3:to})"
+  },
+  "like": {
+    "prefix": ["db_like", "like"],
+    "scope": "javascript,typescript",
+    "body": "like(${1:column}, ${2:value})"
+  },
+  "ilike": {
+    "prefix": ["db_ilike", "ilike"],
+    "scope": "javascript,typescript",
+    "body": "ilike(${1:column}, ${2:value})"
+  },
+  "notIlike": {
+    "prefix": ["db_not_ilike", "notIlike"],
+    "scope": "javascript,typescript",
+    "body": "notIlike(${1:column}, ${2:value})"
+  },
+  "not": {
+    "prefix": ["db_not", "not"],
+    "scope": "javascript,typescript",
+    "body": "not(${1:condition})"
+  },
+  "and": {
+    "prefix": ["db_and", "and"],
+    "scope": "javascript,typescript",
+    "body": "and(${1:condition}, ${2:condition})"
+  },
+  "or": {
+    "prefix": ["db_or", "or"],
+    "scope": "javascript,typescript",
+    "body": "or(${1:condition}, ${2:condition})"
+  },
+  "arrayContains": {
+    "prefix": ["db_array_contains", "arrayContains"],
+    "scope": "javascript,typescript",
+    "body": "arrayContains(${1:column}, ${2:value})"
+  },
+  "arrayContained": {
+    "prefix": ["db_array_contained", "arrayContained"],
+    "scope": "javascript,typescript",
+    "body": "arrayContained(${1:column}, ${2:value})"
+  },
+  "arrayOverlaps": {
+    "prefix": ["db_array_overlaps", "arrayOverlaps"],
+    "scope": "javascript,typescript",
+    "body": "arrayOverlaps(${1:column}, ${2:value})"
+  }
+}

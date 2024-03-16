@@ -1,0 +1,47 @@
+{
+  "name": "vscode-astrodb-snippets",
+  "displayName": "Astro DB snippets",
+  "description": "This extension for Visual Studio Code adds snippets for Astro DB. Now you can create your Astro DB files faster and easier.",
+  "version": "1.0.0",
+  "preview": true,
+  "icon": "icon.jpg",
+  "license": "MIT",
+  "publisher": "imgildev",
+  "author": {
+    "name": "Manuel Gil",
+    "url": "https://github.com/ManuelGil"
+  },
+  "sponsor": {
+    "url": "https://github.com/sponsors/manuelgil"
+  },
+  "engines": {
+    "vscode": "^1.46.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "keywords": [
+    "astro db",
+    "astro-db",
+    "astro",
+    "snippet",
+    "snippets",
+    "vscode"
+  ],
+  "homepage": "https://github.com/ManuelGil/vscode-astrodb-snippets",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ManuelGil/vscode-astrodb-snippets"
+  },
+  "bugs": {
+    "url": "https://github.com/ManuelGil/vscode-astrodb-snippets/issues"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "typescript",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ]
+  }
+}

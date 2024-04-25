@@ -67,12 +67,12 @@
   "$with": {
     "prefix": ["db__with", "$with"],
     "scope": "javascript,typescript",
-    "body": ["db.\\$with(${1:alias}).as(", "\t\tdb.select({", "\t\t  $2,", "\t\t})", "\t\t.from(${3:table})", "\t\t.where(", "\t\t  $4,", "\t\t)", "\t);", ""]
+    "body": ["db.\\$with(${1:alias}).as(", "\t\tdb.select({", "\t\t\t$2,", "\t\t})", "\t\t.from(${3:table})", "\t\t.where(", "\t\t\t$4,", "\t\t)", "\t);", ""]
   },
   "with": {
     "prefix": ["db_with", "with"],
     "scope": "javascript,typescript",
-    "body": ["db.with(${1:alias})", "\t.select({", "\t\t$2,", "\t})", "\t.from(${1:alias})", "\t.where(", "\t\t$3,", "\t);", ""]
+    "body": ["db.with(${1:alias})", "\t.select({", "\t\t$2,", "\t})", "\t.from(${1:alias})", "\t.where(", "\t\t$3,", "\t)", "\t.returning({", "\t\t$4,", "\t});", ""]
   },
   "update": {
     "prefix": ["db_update", "update"],
@@ -92,12 +92,12 @@
   "onConflictDoUpdate": {
     "prefix": ["db_on_conflict_do_update", "onConflictDoUpdate"],
     "scope": "javascript,typescript",
-    "body": ["await db.insert(${1:table}).values({", "\t\t$2,", "\t}).onConflictDoUpdate({", "\t\ttarget: ${3:column},", "\t\tset: {", "\t\t  $4,", "\t\t},", "\t});", ""]
+    "body": ["await db.insert(${1:table}).values({", "\t\t$2,", "\t}).onConflictDoUpdate({", "\t\ttarget: ${3:column},", "\t\ttargetWhere: {", "\t\t\t$4,", "\t\t},", "\t\tset: {", "\t\t\t$5,", "\t\t},", "\t\tsetWhere: {", "\t\t\t$6,", "\t\t},", "\t});", ""]
   },
   "onDuplicateKeyUpdate": {
     "prefix": ["db_on_duplicate_key_update", "onDuplicateKeyUpdate"],
     "scope": "javascript,typescript",
-    "body": ["await db.insert(${1:table}).values({", "\t\t$2,", "\t}).onDuplicateKeyUpdate({", "\t\tset: {", "\t\t  $3,", "\t\t},", "\t});", ""]
+    "body": ["await db.insert(${1:table}).values({", "\t\t$2,", "\t}).onDuplicateKeyUpdate({", "\t\tset: {", "\t\t\t$3,", "\t\t},", "\t});", ""]
   },
   "delete": {
     "prefix": ["db_delete", "delete"],

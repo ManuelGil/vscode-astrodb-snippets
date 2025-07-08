@@ -85,7 +85,7 @@ Type the prefix of any snippet below, then press **Tab** or **Enter** to expand.
 
 ## Contributing
 
-Contributions to the Angular Starter Extension Pack are welcome and appreciated. To contribute:
+Contributions to the Astro DB Snippets are welcome and appreciated. To contribute:
 
 1. Fork the [GitHub repository](https://github.com/ManuelGil/vscode-astrodb-snippets).
 2. Create a new branch for your feature or fix:

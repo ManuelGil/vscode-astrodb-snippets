@@ -1,8 +1,8 @@
 {
   "name": "vscode-astrodb-snippets",
   "displayName": "Astro DB snippets",
-  "description": "This extension for Visual Studio Code adds snippets for Astro DB. Now you can create your Astro DB files faster and easier.",
-  "version": "1.1.0",
+  "description": "Professional Astro DB snippets for VSCode. Boost productivity with clear, well-documented, and auto-completing code patterns for modern database development.",
+  "version": "1.1.1",
   "icon": "icon.jpg",
   "license": "MIT",
   "publisher": "imgildev",
@@ -23,6 +23,7 @@
     "astro db",
     "astro-db",
     "astro",
+    "auto-complete",
     "snippet",
     "snippets",
     "vscode"
